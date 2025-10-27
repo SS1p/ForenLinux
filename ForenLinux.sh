@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Linux Forensics Script - ForenLinux.sh
+#Author: SS1P
 # Version: 1.3
 # Purpose: Collect Linux system data for incident response, forensic analysis, and routine auditing
-
 # Default Configuration
 BASE_DIR="/mnt/forenlinux_$(date +%Y%m%d%H%M%S)"
 OUTPUT_DIR="${BASE_DIR}/output"
