@@ -160,9 +160,6 @@ After the script completes, data and reports are stored in the specified output 
   openssl enc -aes-256-cbc -d -k mypassword -in forenlinux_data_<timestamp>.tar.gz.enc -out forenlinux_data_<timestamp>.tar.gz
   ```
 
-### IV. Summary
-`ForenLinux.sh` is a powerful and flexible Linux forensic tool suitable for incident response, system auditing, and digital forensics in various scenarios. Its modular design, progress feedback, data security, and cross-platform compatibility make it an ideal choice for system administrators and forensic analysts. With simple command-line options, users can easily customize the collection scope and execution mode to quickly obtain the required data.
-
-If you encounter any issues or have suggestions for improvement during use, please feel free to contact the development team or submit feedback.
-
+### IV. Language Switch
+If you need Simplified Chinese, please click --->  - zh_CN [简体中文](readme/README.zh_CN.md)
 ---
