@@ -161,5 +161,5 @@ After the script completes, data and reports are stored in the specified output 
   ```
 
 ### IV. Language Switch
-If you need Simplified Chinese, please click --->  - zh_CN [简体中文](readme/README.zh_CN.md)
+ - 点击 --->  zh_CN[简体中文](readme/README.zh_CN.md)
 ---
