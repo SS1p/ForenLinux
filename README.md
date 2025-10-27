@@ -16,7 +16,7 @@
 
 ### II. Innovative Features
 
-`ForenLinux.sh` stands out from other forensic tools due to the following innovative features in its design and implementation:
+`ForenLinux` stands out from other forensic tools due to the following innovative features in its design and implementation:
 
 1. **Modularity and Flexibility**:
    - The script supports multiple collection modes (Quick Mode, Standard Mode, Deep Mode), allowing users to choose different data collection scopes based on their needs.
