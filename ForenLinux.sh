@@ -1,11 +1,12 @@
+
 #!/bin/bash
 
 # Linux Forensics Script - ForenLinux.sh
-#Author: SS1P 
+# Author: SS1P 
 # Version: 1.3
 # Purpose: Collect Linux system data for incident response, forensic analysis, and routine auditing
-# Default Configuration
 
+# Default Configuration
 BASE_DIR="/mnt/forenlinux_$(date +%Y%m%d%H%M%S)"
 OUTPUT_DIR="${BASE_DIR}/output"
 HASH_ALGO="md5,sha256"
@@ -50,9 +51,10 @@ show_progress_dialog() {
     # Fallback to text-based progress bar if dialog is not available
     local bars=$((percentage / 10))
     local spaces=$((10 - bars))
-    printf "\r[%*s%*s] %d%% %s" $bars "#" $spaces "-" "$percentage" "$message"
+    printf "\r[%*s%*s] %d%% %s" $bars "#" $spaces " " "$percentage" "$message"
   fi
 }
+
 
 # Initialize Progress Bar
 init_progress() {
@@ -354,6 +356,48 @@ generate_report() {
   log_message "INFO" "Report generated" "command:generate_report" "target:$REPORT_FILE" "result:success"
 }
 
+# Display Summary Information for Initial Analysis
+display_summary() {
+  if [ $SILENT_MODE -eq 0 ]; then
+    echo ""
+    echo "============================== ForenLinux Summary Information =============================="
+    echo "  System Information:"
+    echo "    - OS: $OS_ID $OS_VERSION"
+    echo "    - Hostname: $(hostname)"
+    echo "    - Collection Time: $(date +'%Y-%m-%d %H:%M:%S')"
+    echo "  Collected Categories:"
+    if [ "$COLLECT_SCOPE" = "all" ] || [ "$COLLECT_SCOPE" = "system" ]; then
+      echo "    - System Basic Info: Collected"
+    fi
+    if [ "$COLLECT_SCOPE" = "all" ] || [ "$COLLECT_SCOPE" = "process" ] || [ $QUICK_MODE -eq 1 ]; then
+      echo "    - Process and Network Info: Collected"
+    fi
+    if [ "$COLLECT_SCOPE" = "all" ] || [ "$COLLECT_SCOPE" = "files" ] || [ $DEEP_MODE -eq 1 ]; then
+      echo "    - Filesystem Info: Collected"
+    fi
+    if [ "$COLLECT_SCOPE" = "all" ] || [ "$COLLECT_SCOPE" = "user" ]; then
+      echo "    - Users and Permissions Info: Collected"
+    fi
+    if [ "$COLLECT_SCOPE" = "all" ] || [ "$COLLECT_SCOPE" = "log" ] || [ $QUICK_MODE -eq 1 ]; then
+      echo "    - Log Data: Collected"
+    fi
+    if [ $DEEP_MODE -eq 1 ]; then
+      echo "    - Disk Image: Collected"
+    fi
+    echo "  Initial Analysis Tips:"
+    echo "    - Check $OUTPUT_DIR/system/ for system details, verify OS version and time."
+    echo "    - Review $OUTPUT_DIR/process/network_connections.txt for suspicious network connections."
+    echo "    - Examine $OUTPUT_DIR/files/recent_modified.txt for recently modified files."
+    echo "    - Analyze $OUTPUT_DIR/users/login_history.txt for unusual login activities."
+    echo "    - Inspect $OUTPUT_DIR/logs/ for suspicious log entries."
+    echo "  Detailed Information Path: $OUTPUT_DIR"
+    echo "  Report File: $REPORT_FILE"
+    echo "============================== End of Summary Information =============================="
+    echo ""
+  fi
+  log_message "INFO" "Summary displayed" "command:display_summary" "target:terminal" "result:success"
+}
+
 # Performance Control
 control_performance() {
   if [ $LOW_PERF_MODE -eq 1 ]; then
@@ -408,7 +452,7 @@ parse_arguments() {
         echo "  --encrypt-pass <pass>   Encrypt packaged file"
         echo "  --low-perf              Low performance mode (reduce resource usage)"
         echo "  --no-progress           Disable progress bar"
-        echo "  -h, --help              Show help information"
+         echo "  -h, --help              Show help information"
         exit 0
         ;;
       *)
@@ -458,6 +502,7 @@ main() {
   validate_data
   package_data
   generate_report
+  display_summary
 
   log_message "INFO" "ForenLinux collection completed" "result:completed"
   if [ $SILENT_MODE -eq 0 ]; then
