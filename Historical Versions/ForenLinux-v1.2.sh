@@ -5,6 +5,7 @@
 # Version: 1.2
 # Purpose: Collect Linux system data for incident response, forensic analysis, and routine auditing
 # Default Configuration
+
 BASE_DIR="/mnt/forenlinux_$(date +%Y%m%d%H%M%S)"
 OUTPUT_DIR="${BASE_DIR}/output"
 HASH_ALGO="md5,sha256"
