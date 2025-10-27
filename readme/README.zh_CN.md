@@ -1,4 +1,4 @@
-## ForenLinux.sh 脚本用户手册
+## ForenLinux 使用手册
 
 ### 一、功能描述
 

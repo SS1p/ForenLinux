@@ -1,4 +1,4 @@
-## ForenLinux.sh Script User Manual
+## ForenLinux User Manual
 
 ### I. Functional Description
 
