@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Linux Forensics Script - ForenLinux.sh
-#Author: SS1P
+#Author: SS1P 
 # Version: 1.3
 # Purpose: Collect Linux system data for incident response, forensic analysis, and routine auditing
 # Default Configuration
