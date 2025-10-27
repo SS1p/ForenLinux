@@ -2,7 +2,7 @@
 
 ### I. Functional Description
 
-`ForenLinux.sh` is a forensic and data collection tool designed for Linux systems, aimed at assisting users with incident response, digital forensic analysis, and routine system auditing. The script collects critical system information in a modular way while ensuring data integrity and security. Below are its core functionalities:
+`ForenLinux` is a forensic and data collection tool designed for Linux systems, aimed at assisting users with incident response, digital forensic analysis, and routine system auditing. The script collects critical system information in a modular way while ensuring data integrity and security. Below are its core functionalities:
 
 - **System Information Collection**: Gathers basic data such as operating system version, kernel information, hostname, system time, timezone, CPU and memory usage, disk partitions, and mount points.
 - **Process and Network Information Collection**: Records the list of currently running processes, system resource usage (via `top`), network connection status, and routing table information.
